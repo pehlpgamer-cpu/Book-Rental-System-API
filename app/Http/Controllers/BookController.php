@@ -26,7 +26,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'title' => ['required', 'string', 'unique:books', 'max:255'],
+            'genre' => ['required','string'],
+            'author' => ['required', 'string'],
+        ]);
+
+        Book::create($validate);
+
+        return response()->json()->setStatusCode(201);
     }
 
     /**

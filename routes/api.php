@@ -9,11 +9,17 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/book1', function () {
-    return ['message' => 'hello'];
+
+
+
+Route::prefix('v1')->group( function () {
+    Route::controller(BookController::class)->group(function () {
+        Route::get('/books', 'index');
+        Route::get('/book/{id}', 'find');
+        Route::post('/books', 'store');
+    });
 });
 
-Route::controller(BookController::class)->group(function () {
-    Route::get('/books', 'index');
-    Route::get('/book/{id}', 'find');
-});
+
+
+

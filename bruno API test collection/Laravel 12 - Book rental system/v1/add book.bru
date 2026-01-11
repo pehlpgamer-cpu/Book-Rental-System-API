@@ -1,0 +1,35 @@
+meta {
+  name: add book
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/api/v1/books
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "dive into design patterns",
+    "genre": "programming",
+    "author": "alex joel"
+  }
+}
+
+body:form-urlencoded {
+  title: slow productivity
+  genre: productivity
+  author: cal newport
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
