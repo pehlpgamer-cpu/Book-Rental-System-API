@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $response = Book::all('id', 'title', 'genre', 'author');
+        
+        $response = Book::paginate($perPage = 3, $columns = ['id', 'title', 'genre', 'author'], $pageName = 'books');
         return $response;
     }
 
@@ -24,13 +26,9 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        $validate = $request->validate([
-            'title' => ['required', 'string', 'unique:books', 'max:255'],
-            'genre' => ['required','string'],
-            'author' => ['required', 'string'],
-        ]);
+        $validate = $request->validated();
 
         Book::create($validate);
 
@@ -53,6 +51,10 @@ class BookController extends Controller
         //
     }
 
+    public function softDelete(int $id)
+    {
+
+    }
     /**
      * Remove the specified resource from storage.
      */

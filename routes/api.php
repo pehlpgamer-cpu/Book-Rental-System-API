@@ -17,9 +17,15 @@ Route::prefix('v1')->group( function () {
         Route::get('/books', 'index');
         Route::get('/book/{id}', 'find');
         Route::post('/books', 'store');
+        Route::patch('/patch/softDelete', 'softDelete');
     });
 });
 
+Route::prefix('v2')->group(function () {
+    // ...
+});
 
 
+Route::middleware('auth:sanctum')->group(function () { // non-public routes
 
+});
