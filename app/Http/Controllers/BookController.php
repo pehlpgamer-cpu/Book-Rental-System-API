@@ -12,9 +12,15 @@ class BookController extends Controller
      */
     public function index()
     {
-        return 'yooo';
+        $response = Book::all('id', 'title', 'genre', 'author');
+        return $response;
     }
 
+    public function find($id)
+    {
+        $response = Book::find($id);
+        return $response;
+    }
     /**
      * Store a newly created resource in storage.
      */

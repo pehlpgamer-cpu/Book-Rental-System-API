@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
+    // php artisan migrate:refresh --seed
     /**
      * Run the migrations.
      */
@@ -13,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->string('genre');
+            $table->string('author');
+            //$table->date('publish_date');
+            $table->boolean('trashbin')->default(false);
             $table->timestamps();
         });
     }

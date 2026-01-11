@@ -15,4 +15,5 @@ Route::get('/book1', function () {
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'index');
+    Route::get('/book/{id}', 'find');
 });
