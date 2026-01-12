@@ -40,7 +40,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        
     }
 
     /**
@@ -48,7 +48,10 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $validated = $request->validate([
+            'title' => ['require'], 
+        ]);
+        
     }
 
     public function softDelete(int $id)

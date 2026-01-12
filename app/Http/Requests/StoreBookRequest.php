@@ -11,7 +11,7 @@ class StoreBookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; //default: false
+        return true; //default: falsed
     }
 
     /**

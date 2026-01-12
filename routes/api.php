@@ -29,3 +29,8 @@ Route::prefix('v2')->group(function () {
 Route::middleware('auth:sanctum')->group(function () { // non-public routes
 
 });
+
+
+//php artisan config:clear
+//php artisan cache:clear
+//php artisan config:cache
